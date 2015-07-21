@@ -65,6 +65,8 @@ redis_instances.each do |current_server|
       provider Chef::Provider::Service::Systemd
       supports :start => true, :stop => true, :restart => true, :status => true
     end
+  when 'supervisord'
+    Chef::Log.info("supervisord job control type, nothing todo.")
   else
     Chef::Log.error("Unknown job control type, no service resource created!")
   end
